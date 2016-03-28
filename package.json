@@ -16,9 +16,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/efiliba/Best-Choice-Care.git"
+    "url": "git+https://github.com/efiliba/bcc.git"
   },
-  "homepage": "https://github.com/efiliba/Best-Choice-Care",
+  "homepage": "https://github.com/efiliba/bcc",
   "author": "Eli Filiba <efiliba@hotmail.com>",
   "license": "MIT",
   "dependencies": {
