@@ -1,0 +1,30 @@
+﻿body {
+    padding-top: 60px;
+    background-color: cornsilk;
+}
+
+.carer {
+    float: left;
+    width: 100%;
+}
+
+.carerThumbnail {
+    float: left;
+    padding-right: 10px;
+}
+
+.carerThumbnail img {
+    width: 110px;
+}
+
+.carer h3 {
+    display: inline;
+}
+
+.glyphicon {
+    padding-right:10px;
+}
+
+.sidebar-nav {
+    min-height: 600px;
+}

@@ -1,0 +1,566 @@
+/*{
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	line-height: normal;
+}
+
+::-webkit-input-placeholder {
+	color:#aaa;
+	font-weight: 300;
+}
+::-moz-placeholder {
+	color:#aaa;
+	font-weight: 300;
+} 
+:-ms-input-placeholder {
+	color:#aaa;
+	font-weight: 300;
+}
+input:-moz-placeholder {
+	color:#aaa;
+	font-weight: 300;
+}
+
+body {
+	background: #FFF;
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+}
+
+.subtitle {
+	margin-top: 0;
+	margin-left: 0;
+	color: #9E9E9E;
+}
+
+.container {
+	max-width: 980px;
+	width: 100%;
+	padding: 15px;
+	margin: 0 auto;
+}
+
+.form {
+	display: none;
+	background: #FAFAFA;
+	padding: 32px 0;
+	border: 1px solid #eee;
+	border-radius: 4px;
+}
+
+.form-content{
+	width: 100%;
+	max-width: 600px;
+	margin: auto;
+	font-size: 14px;
+}
+
+.form .form-title{
+	font-size: 16px;
+	font-weight: 700;
+	margin-bottom: 16px;
+	color: #757575;
+}
+
+.form .form-field{
+	width: 100%;
+	margin-bottom: 16px;
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+	line-height: normal;
+	padding: 12px 16px;
+	border-radius: 4px;
+	border: 1px solid #ddd;
+	outline: none;
+	color: #212121;
+}
+
+.form textarea.form-field{
+	min-height: 200px;
+}
+
+.form .post-submit-button{
+	display: inline-block;
+	padding: 8px 16px;
+	font-size: 18px;
+	color: #FFF;
+	background: #03A9F4;
+	text-decoration: none;
+	border-radius: 4px;
+}
+
+.form.appear {
+	display: block;
+}
+
+.single-post {
+	margin: 20px 0;
+	padding: 15px;
+	border-radius: 2px;
+}
+
+.single-post .post-title{
+	font-size: 28px;
+	margin-bottom: 16px;
+	font-weight: 400;
+	color: #616161;
+}
+
+.single-post.post-detail .post-title{
+	font-size: 42px;
+	color: #454545;
+}
+
+.single-post .post-title a{
+	text-decoration: none;
+	color: #616161;
+}
+
+.single-post .author-name{
+	font-size: 16px;
+	margin-bottom: 16px;
+	color: #757575;
+}
+
+.single-post .post-desc{
+	font-size: 14px;
+	color: #888;
+	margin-bottom: 8px;
+}
+
+.single-post.post-detail .post-desc{
+	font-size: 16px;
+	color: #555;
+}
+
+.single-post .post-action a{
+	color: #555;
+	text-decoration: none;
+	font-size: 14px;
+	font-style: italic;
+}
+
+.single-post .post-action a:hover{
+	color: #EF5350;
+}
+
+.single-post .divider{
+	border: 0;
+    height: 1px;
+    background: #ccc;
+    width: 250px;
+    margin: 32px auto 0;
+}
+
+.header {
+	background-color: #eee;
+	background-position: center;
+	background-size: cover;
+	border-bottom: 1px solid #ccc;
+}
+
+.header .header-content {
+	width: 100%;
+	max-width: 980px;
+	margin: auto;
+	padding: 64px 16px;
+	overflow: auto;
+}
+
+.site-title {
+	font-weight: 300;
+	font-size: 42px;
+	float: left;
+}
+
+.site-title a{
+	text-decoration: none;
+	color: #FFF;
+}
+
+.add-post-button {
+	display: inline-block;
+    color: #FFF;
+    background: #03A9F4;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 1000px;
+    float: right;
+}
+
+.footer{
+	text-align: center;
+	padding: 56px 0;
+	background-color: #FFF;
+	background-position: center;
+	background-size: cover;
+}
+
+.footer p{
+	margin: 0 0 8px 0;
+	font-size: 14px;
+	color: #FFF;
+}
+
+.footer a{
+	color: #FFF;
+	text-decoration: none;
+	font-weight: 700;
+}
+
+@media (max-width: 767px) {
+	.add-post-button{
+		float: left;
+		margin-top: 16px;
+	}
+}*/
+
+/*--------------------------------------------*/
+
+.form {
+	display: none;
+	background: #FAFAFA;
+	padding: 32px 0;
+	border: 1px solid #eee;
+	border-radius: 4px;
+}
+
+.form-content{
+	width: 100%;
+	max-width: 600px;
+	margin: auto;
+	font-size: 14px;
+}
+
+.form .form-title{
+	font-size: 16px;
+	font-weight: 700;
+	margin-bottom: 16px;
+	color: #757575;
+}
+
+.form .form-field{
+	width: 100%;
+	margin-bottom: 16px;
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+	line-height: normal;
+	padding: 12px 16px;
+	border-radius: 4px;
+	border: 1px solid #ddd;
+	outline: none;
+	color: #212121;
+}
+
+.form textarea.form-field{
+	min-height: 200px;
+}
+
+.form .submit-button {
+	display: inline-block;
+	padding: 8px 16px;
+	font-size: 18px;
+	color: #FFF;
+	background: #03A9F4;
+	text-decoration: none;
+	border-radius: 4px;
+}
+
+body {
+    padding-top: 111px;
+	background: #FFF;
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+}
+
+header, #content, footer {
+    display: none;
+}
+
+.navbar {
+    margin-bottom: 0px; 
+    padding: 30px 15px;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.navbar img {
+    width: 100px; 
+    height: 50px;
+}
+
+.cbp-af-header-shrink {
+    padding: 5px 5px; 
+    opacity: 0.9;
+}
+
+div#collapsingNavbar, .navbar-toggler {
+    float: right;
+}
+
+div.fill-screen {
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+}
+
+/* There may be a problem with scrolling into a fixed image in smaller devices - disable using: (after testing on real iPhone)
+@media (max-width: 1024px) {
+    .fixed-attachment {
+        background-attachment: scroll;
+    }
+}*/
+
+section.title-screen div.fill-screen {
+    background-image: url(/images/home.jpg);
+    background-repeat: no-repeat;
+    background-position-x: 50% !important;
+}
+
+section#about-image div.fill-screen {
+    background-position: center;
+}
+
+.text-banner {
+    text-align: center;
+    margin: 40px 20px;
+}
+
+.text-banner h1 {
+    font-size: 44px;
+}
+
+.text-banner p {
+    font-size: 18px;
+}
+
+.title-row {
+    position: relative;
+    min-height: 300px;
+}
+
+.title-image {
+    position: absolute;
+    padding: 20px;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.down-button {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+}
+
+.down-button i {
+    color: white;
+}
+
+.services-element {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.activity-section {
+    margin: 50px;
+}
+
+.activity-element {
+    text-align: center;
+}
+
+.activity-element img {
+    width: 150px;
+    height: 150px;
+}
+
+#contactUsForm {
+    text-align: center;
+}
+
+footer {
+    background-color: #333;
+    color: #ddd;
+    padding: 20px;
+    text-align: center;
+}
+
+aside {
+    background-color: #f7f7f7;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.range-list {
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+
+.range-list h4 {
+    margin-bottom: 40px;
+    color: darkorange;
+    font-weight: bold;
+}
+
+.range-list img {
+    width: 100%;
+    height: 100%;
+    max-width: 140px;
+    max-height: 60px;
+}
+
+.range-title {
+    color: darkblue;
+}
+
+.sports-icon-list {
+    background-color: #333;
+    padding-bottom: 40px;
+}
+
+.sports-icon-list a {
+    color: white;
+}
+
+.sports-icon-list a h6 {
+    margin-top: 2px;
+    margin-bottom: 14px;
+}
+
+.sports-icon-list img {
+    width: 70px;
+    height: 70px;
+}
+
+article {
+    padding: 40px;
+}
+
+article img {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    box-shadow: 6px 6px 8px #777;
+    margin-bottom: 20px;
+}
+
+article p {
+    font-size: 16px;
+}
+
+/* Set lables to left of images in mobile */
+@media (max-width: 767px) {
+    .range-list h4 {
+        display: inline;
+        font-size: 18px;
+    }
+
+    .range-list a {
+        display: block;
+    }
+
+    .range-list img {
+        width: 33%;
+        height: 33%;
+        margin-right: 10px;
+        margin-bottom: 30px;
+        margin-top: 20px;
+    }
+}
+
+/*--------------------------------------------*/
+
+::-webkit-input-placeholder {
+	color:#aaa;
+	font-weight: 300;
+}
+::-moz-placeholder {
+	color:#aaa;
+	font-weight: 300;
+} 
+:-ms-input-placeholder {
+	color:#aaa;
+	font-weight: 300;
+}
+input:-moz-placeholder {
+	color:#aaa;
+	font-weight: 300;
+}
+
+.form {
+	display: none;
+	background: #FAFAFA;
+	padding: 32px 0;
+	border: 1px solid #eee;
+	border-radius: 4px;
+}
+
+.form-content{
+	width: 100%;
+	max-width: 600px;
+	margin: auto;
+	font-size: 14px;
+}
+
+.form .form-title{
+	font-size: 16px;
+	font-weight: 700;
+	margin-bottom: 16px;
+	color: #757575;
+}
+
+.form .form-field{
+	width: 100%;
+	margin-bottom: 16px;
+	font-family: 'Lato', sans-serif;
+	font-size: 16px;
+	line-height: normal;
+	padding: 12px 16px;
+	border-radius: 4px;
+	border: 1px solid #ddd;
+	outline: none;
+	color: #212121;
+}
+
+.form textarea.form-field{
+	min-height: 200px;
+}
+
+.form .submit-button {
+	display: inline-block;
+	padding: 8px 16px;
+	font-size: 18px;
+	color: #FFF;
+	background: #03A9F4;
+	text-decoration: none;
+	border-radius: 4px;
+}
+
+/*--------------------------------------------*/
+
+.carer-thumbnail > img {
+	background-color: greenyellow;
+}
+
+/*
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0 450px 0 20px;
+}
+
+.item-rows {
+    background-color: lightyellow !important;
+    cursor: pointer;
+}
+
+.pageInfoIconElement {
+    padding-right: 10px;
+}*/
