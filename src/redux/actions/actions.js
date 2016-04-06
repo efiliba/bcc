@@ -18,7 +18,7 @@ export const onContactUsSaved = (state) => {
 
 export const avatarSelected = (state, avatar) => {
     const fieldname = Date.now() + '-' + avatar.name;
-    const req = request.post(`${config.baseURL}/avatar`);
+    const req = request.post(`${config.baseURL}/saveAvatar`);
     req.attach(fieldname, avatar);
 
     req.end((req, res) => {

@@ -1,5 +1,4 @@
 import Express from 'express';
-import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import path from 'path';
 //import fs from 'fs';
@@ -29,27 +28,15 @@ import configureStore from '../src/redux/configureStore';
 // Import required modules
 import routes from '../src/routes';
 import {fetchComponentData} from './util/fetchData';
-import carersApi from './routes/carer.routes';
-import adminApi from './routes/admin.routes';
 import serverConfig from './config';
 import template from './template';
 import Footer from '../src/components/Site/Footer';
 import {INITIAL_STATE} from '../src/redux/actions/actions';
 
-// MongoDB Connection
-mongoose.connect(serverConfig.mongoURL, (error, connection) => {
-    if (error) {
-        console.error('Please make sure Mongodb is installed and running!')
-        throw error;
-    }
-});
-
 // Apply body Parser and server public assets and routes
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../build')));
-app.use('/api', adminApi);
-app.use('/api', carersApi);
 
 // Server Side Rendering based on routes matched by React-router.
 app.use((req, res) => {
@@ -84,5 +71,8 @@ app.use((req, res) => {
 app.listen(serverConfig.port, (error) => {
     if (!error) {
         console.log(`BestChoiceCare is running on port: ${serverConfig.port}!`); // eslint-disable-line
+        console.log(`API connected to: ${serverConfig.baseURL}`);
+    } else {
+        console.log(`Error starting server on port: ${serverConfig.port}. ERROR: ${error}`);
     }
 });
