@@ -1,7 +1,6 @@
 import Express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
-//import fs from 'fs';
 
 // Webpack Requirements
 import webpack from 'webpack';
@@ -36,7 +35,7 @@ import {INITIAL_STATE} from '../src/redux/actions/actions';
 // Apply body Parser and server public assets and routes
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
-app.use(Express.static(path.resolve(__dirname, '../build')));
+app.use(Express.static(serverConfig.staticFiles));
 
 // Server Side Rendering based on routes matched by React-router.
 app.use((req, res) => {

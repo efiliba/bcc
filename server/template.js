@@ -1,6 +1,6 @@
-﻿export default (html, initialState) => {
-    const cssPath = process.env.NODE_ENV === 'production' ? '/css/app.min.css' : '/css/app.css';
-    return `
+﻿import {staticFiles, cssPath} from './config';
+
+export default (html, initialState) => `
     <!doctype html>
     <html>
       <head>
@@ -12,8 +12,8 @@
 		<link rel="stylesheet" href="https://cask.scotch.io/bootstrap-4.0-flex.css" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
         <link rel="stylesheet" href=${cssPath} />
-        <link rel="shortcut icon" href="/images/fav_icon.jpg" type="image/jpg" />
-        <link rel="stylesheet" href="/css/animate.min.css" />
+        <link rel="shortcut icon" href="${staticFiles}/images/fav_icon.jpg" type="image/jpg" />
+        <link rel="stylesheet" href="${staticFiles}/css/animate.min.css" />
        
       </head>
       <body>
@@ -21,15 +21,15 @@
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
-   		<script src="/scripts/classie.js"></script>
-   		<script src="/scripts/cbpAnimatedHeader.min.js"></script>
+   		<script src="${staticFiles}/scripts/classie.js"></script>
+   		<script src="${staticFiles}/scripts/cbpAnimatedHeader.min.js"></script>
    		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script><!-- Tether for Bootstrap -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
-        <script src="/dist/bundle.js"></script>
-        <script src="/scripts/jquery.easing.1.3.js"></script>
-        <script src="/scripts/jquery.stellar.min.js"></script>
-        <script src="/scripts/wow.min.js"></script>
+        <script src="${staticFiles}/dist/bundle.js"></script>
+        <script src="${staticFiles}/scripts/jquery.easing.1.3.js"></script>
+        <script src="${staticFiles}/scripts/jquery.stellar.min.js"></script>
+        <script src="${staticFiles}/scripts/wow.min.js"></script>
         
         <script>
             $(function() {
@@ -38,10 +38,10 @@
 
                     // Set src of all img's to it's data-src value (deferred images)
                     $('img[data-src]').each(function() {
-                        this.src = $(this).data("src");
+                        this.src = "${staticFiles}" + $(this).data("src");
                     });
 
-                    $('section#about-image div.fill-screen').css("background-image", "url(/images/beach.jpg)");
+                    $('section#about-image div.fill-screen').css("background-image", "url(${staticFiles}/images/beach.jpg)");
                     $('header, #content, footer, #contactUsForm').fadeIn();
                 });
 
@@ -68,5 +68,4 @@
         </script>
       </body>
     </html>
-  `;
-};
+`;

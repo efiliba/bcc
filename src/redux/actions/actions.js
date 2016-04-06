@@ -1,5 +1,5 @@
 import request from 'superagent';
-import config from '../../../server/config';
+import {baseURL} from '../../../server/config';
 
 export const INITIAL_STATE = { carers: { list: []} };
 
@@ -18,7 +18,7 @@ export const onContactUsSaved = (state) => {
 
 export const avatarSelected = (state, avatar) => {
     const fieldname = Date.now() + '-' + avatar.name;
-    const req = request.post(`${config.baseURL}/saveAvatar`);
+    const req = request.post(`${baseURL}/saveAvatar`);
     req.attach(fieldname, avatar);
 
     req.end((req, res) => {

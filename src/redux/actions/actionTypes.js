@@ -5,4 +5,3 @@ export const ADD_CARERS = 'ADD_CARERS';
 export const SET_SELECTED_CARER = 'SET_SELECTED_CARER';
 
 export const AVATAR_SELECTED = 'AVATAR_SELECTED';
-export const AVATAR_LOADED = 'AVATAR_LOADED';

@@ -315,7 +315,7 @@ div.fill-screen {
 }*/
 
 section.title-screen div.fill-screen {
-    background-image: url(/images/home.jpg);
+    background-image: url(/bestcc/images/home.jpg);
     background-repeat: no-repeat;
     background-position-x: 50% !important;
 }
