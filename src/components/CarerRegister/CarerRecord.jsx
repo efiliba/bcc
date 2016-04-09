@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import Qualifications from './Qualifications';
 import Preferences from './Preferences';
-import {staticFiles} from '../../../server/config';
+import {avatarPath} from '../../../server/config';
 
 const CarerRecord = ({carer}) => (
     <div className='carer'>
@@ -11,7 +11,7 @@ const CarerRecord = ({carer}) => (
 		
 		<div className='row'>
 			<div className='carer-thumbnail col-xs-7 col-sm-4 col-md-3 col-lg-2'>
-				<img src={`${staticFiles}/images/${carer.avatarFileName}`} alt='{carer.name}' className='img-responsive center-block img-thumbnail img-rounded' />
+				<img src={`${avatarPath}/${carer.avatarFileName}`} alt='{carer.name}' className='img-responsive center-block img-thumbnail img-rounded' />
 			</div>
 			
 			<div className='carer-services hidden-xs-down col-sm-8 col-md-9 col-lg-10'>

@@ -1,5 +1,5 @@
 import request from 'superagent';
-import {baseURL} from '../../../server/config';
+import {apiUrl} from '../../../server/config';
 
 export const INITIAL_STATE = { carers: { list: []} };
 
@@ -7,18 +7,16 @@ export const addCarers = (state, carers) => carers;
 
 export const setSelectedCarer = (state, carer) => state;
 
-export const onContactUsSaved = (state) => {
-    return {
-        submitted: true,
-        request: {
-            value: ''                           // textarea values have to be explicitly cleared
-        }
-    };
-};
+export const onContactUsSaved = (state) => ({
+    submitted: true,
+    request: {
+        value: ''                               // textarea values have to be explicitly cleared
+    }
+});
 
 export const avatarSelected = (state, avatar) => {
     const fieldname = Date.now() + '-' + avatar.name;
-    const req = request.post(`${baseURL}/saveAvatar`);
+    const req = request.post(`${apiUrl}/avatar`);
     req.attach(fieldname, avatar);
 
     req.end((req, res) => {

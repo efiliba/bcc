@@ -1,6 +1,5 @@
 import Express from 'express';
 import bodyParser from 'body-parser';
-import path from 'path';
 
 // Webpack Requirements
 import webpack from 'webpack';
@@ -35,7 +34,7 @@ import {INITIAL_STATE} from '../src/redux/actions/actions';
 // Apply body Parser and server public assets and routes
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
-app.use(Express.static(serverConfig.staticFiles));
+app.use(Express.static(serverConfig.serveStaticFiles));
 
 // Server Side Rendering based on routes matched by React-router.
 app.use((req, res) => {
@@ -69,8 +68,8 @@ app.use((req, res) => {
 
 app.listen(serverConfig.port, (error) => {
     if (!error) {
-        console.log(`BestChoiceCare is running on port: ${serverConfig.port}!`); // eslint-disable-line
-        console.log(`API connected to: ${serverConfig.baseURL}`);
+        console.log(`BestChoiceCare is running on port: ${serverConfig.port}`); // eslint-disable-line
+        console.log(`API connected to: ${serverConfig.apiUrl}`);
     } else {
         console.log(`Error starting server on port: ${serverConfig.port}. ERROR: ${error}`);
     }
