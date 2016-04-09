@@ -1,0 +1,3 @@
+app.css sets the background-image to url(/bestcc/images/home.jpg)
+
+Path coppied so that the image would also exist in development mode. 
