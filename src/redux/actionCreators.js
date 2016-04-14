@@ -1,6 +1,6 @@
 ﻿import * as ActionTypes from './actions/actionTypes';
 import fetch from 'isomorphic-fetch';
-import {apiUrl} from '../../server/config';
+import {apiUrl} from '../../config';
 
 export const saveContactRequest = (data) => (dispatch) => 
     fetch(`${apiUrl}/saveContactRequest`, {

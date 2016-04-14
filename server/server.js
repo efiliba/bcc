@@ -26,7 +26,7 @@ import configureStore from '../src/redux/configureStore';
 // Import required modules
 import routes from '../src/routes';
 import {fetchComponentData} from './util/fetchData';
-import serverConfig from './config';
+import serverConfig from '../config';
 import template from './template';
 import Footer from '../src/components/Site/Footer';
 import {INITIAL_STATE} from '../src/redux/actions/actions';
@@ -49,7 +49,7 @@ app.use((req, res) => {
 
         const store = configureStore(INITIAL_STATE);
 
-        fetchComponentData(store.dispatch, renderProps.components, renderProps.params)
+        fetchComponentData(store, renderProps.components, renderProps.params)
             .then(() => renderToString(
                 <Provider store={store}>
                     <div>

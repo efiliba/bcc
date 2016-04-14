@@ -1,9 +1,13 @@
 import request from 'superagent';
-import {apiUrl} from '../../../server/config';
+import {apiUrl} from '../../../config';
 
 export const INITIAL_STATE = { carers: { list: []} };
 
-export const addCarers = (state, carers) => carers;
+export const addCarers = (state, carers) => {
+    //state.list.push(...carers);
+    state.list = carers;
+    return state;
+};
 
 export const setSelectedCarer = (state, carer) => state;
 

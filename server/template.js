@@ -1,4 +1,4 @@
-﻿import {staticFiles, cssPath} from './config';
+﻿import {staticFiles, cssPath} from '../config';
 
 export default (html, initialState) => `
     <!doctype html>
@@ -42,7 +42,7 @@ export default (html, initialState) => `
                     });
 
                     $('section#about-image div.fill-screen').css("background-image", "url(${staticFiles}/images/beach.jpg)");
-                    $('header, #content, footer, #contactUsForm').fadeIn();
+//                    $('header, #content, footer, #contactUsForm').fadeIn();
                 });
 
                 $(window).on("load resize", function() {
@@ -54,7 +54,7 @@ export default (html, initialState) => `
                     offset: 160
                 });
         
-                $('nav a, .down-button a').bind('click', function() {
+                $('.nav-anchor, .down-button a').bind('click', function() {
                     $('html, body').stop().animate({
                         scrollTop: $($(this).attr('href')).offset().top - 100
                     }, 1500, 'easeInOutExpo');

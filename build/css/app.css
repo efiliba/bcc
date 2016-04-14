@@ -276,9 +276,10 @@ body {
 	font-size: 16px;
 }
 
+/*
 header, #content, footer {
     display: none;
-}
+}*/
 
 .navbar {
     margin-bottom: 0px; 
@@ -564,3 +565,8 @@ body {
 .pageInfoIconElement {
     padding-right: 10px;
 }*/
+
+.underDevelopment {
+    font-size: X-LARGE;
+    color: darkblue;
+}

@@ -1,11 +1,13 @@
 ﻿import React from 'react';
 import ContactUsContainer from '../Admin/ContactUsContainer';
+import {Link} from 'react-router';
 
 export default () => (
     <div className="container-fluid" id="content">
         <section className="row title-screen">
             <div className="fill-screen stellar-bg" data-stellar-background-ratio="0.2">
                 <img className="img-responsive title-image" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Logo" data-src="/images/logo.jpg" />
+                <Link className="underDevelopment" to={'/carers'}>Features Under Development</Link>
                 <div className="down-button">
                     <a className="btn" href="#about">
                         <i className="fa fa-arrow-circle-down fa-4x"></i>

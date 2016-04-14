@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import Qualifications from './Qualifications';
 import Preferences from './Preferences';
-import {avatarPath} from '../../../server/config';
+import {avatarPath} from '../../../config';
 
 const CarerRecord = ({carer}) => (
     <div className='carer'>

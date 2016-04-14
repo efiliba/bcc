@@ -33,7 +33,7 @@ const CarerRegister = ({fields: {name, email, profile}, submitted, handleSubmit}
         </fieldset>
 
         <button type="submit" className="btn btn-primary">Submit</button>
-</form>
+    </form>
 );
 
 export default CarerRegister;
