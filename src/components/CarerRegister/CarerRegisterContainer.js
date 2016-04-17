@@ -1,6 +1,7 @@
 ﻿import {reduxForm} from 'redux-form';
 import CarerRegister from './CarerRegister';
 import * as Actions from '../../redux/actionCreators';
+import {browserHistory} from 'react-router';
 
 const config = {
     form: 'carerRegisterForm',
@@ -20,6 +21,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     onSubmit: (data) => {
         dispatch(Actions.registerCarer(Object.assign({}, data, {avatarFileName: saveAvatarFileName()})));
+        browserHistory.push('/carers');
     }
 });
 

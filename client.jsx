@@ -4,7 +4,6 @@ import {Provider} from 'react-redux';
 import {Router, browserHistory} from 'react-router';
 import configureStore from './src/redux/configureStore';
 import DevTools from './src/components/DevTools';
-import Footer from './src/components/Site/Footer';
 import routes from './src/routes';
 
 //import createBrowserHistory from 'history/lib/createBrowserHistory';
@@ -13,13 +12,10 @@ const store = configureStore(window.__INITIAL_STATE__);
 const history = browserHistory;
 const dest = document.getElementById('root');
 
-render((
+render(
     <Provider store={store}>
-        <div>
-            <Router history={history} routes={routes}/>
-            <Footer/>
-        </div>
-    </Provider>),
+        <Router history={history} routes={routes}/>
+    </Provider>,
     dest
 );
 
@@ -32,14 +28,13 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 if (process.env.CLIENT) {
-    render((
+    render(
         <Provider store={store} key="provider">
             <div>
                 <Router history={history} routes={routes} />
-                <Footer/>
                 <DevTools />
             </div>
-        </Provider>),
+        </Provider>,
         dest
     );
 }

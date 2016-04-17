@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import {Link} from 'react-router';
 
-export default ({children, links, active}) => {
+const Header = ({children, links, active}) => {
     const navbars = links.map((link) => (
         <li className="nav-item" key={link.label}>
             {link.href && <a className="nav-link nav-anchor" href={link.href}>{link.label}</a>}
@@ -13,7 +13,7 @@ export default ({children, links, active}) => {
             <header id="top">
                 <nav className="navbar navbar-fixed-top navbar-dark bg-inverse cbp-af-header">
                     <a href="#top">
-                        <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="/images/logo.jpg" />
+                        <img src="/images/logo.jpg" />
                     </a>
                     <button className="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
                         &#9776;
@@ -29,3 +29,5 @@ export default ({children, links, active}) => {
         </div>
     );
 };
+
+export default Header;

@@ -18,7 +18,7 @@ export default (html, initialState) => `
       <body>
         <div id="root">${html}</div>
         <script>
-          window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
+            window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
         </script>
    		<script src="${staticFiles}/scripts/classie.js"></script>
    		<script src="${staticFiles}/scripts/cbpAnimatedHeader.min.js"></script>
@@ -33,37 +33,8 @@ export default (html, initialState) => `
         
         <script>
             $(function() {
-                $(window).on("load", function() {
-                   // $("body").css("padding-top", "63px");
-
-                    // Set src of all img's to it's data-src value (deferred images)
-                    $('img[data-src]').each(function() {
-                        this.src = "${staticFiles}" + $(this).data("src");
-                    });
-
-                    $('section#about-image div.fill-screen').css("background-image", "url(${staticFiles}/images/beach.jpg)");
-//                    $('header, #content, footer, #contactUsForm').fadeIn();
-                });
-
-                $(window).on("load resize", function() {
-                    $(".fill-screen").css("height", window.innerHeight - 100);
-                });
-        
-                $('body').scrollspy({ 
-                    target: '.navbar',
-                    offset: 160
-                });
-        
-                $('.nav-anchor, .down-button a').bind('click', function() {
-                    $('html, body').stop().animate({
-                        scrollTop: $($(this).attr('href')).offset().top - 100
-                    }, 1500, 'easeInOutExpo');
-                    event.preventDefault();
-                });
-
-                $(window).stellar();
-
-                new WOW().init();
+                $(window).stellar();            // Perspective scrolling
+                new WOW().init();               // Reveal CSS animations
             });
         </script>
       </body>

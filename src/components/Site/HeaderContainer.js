@@ -1,28 +1,10 @@
 ﻿import {connect} from 'react-redux';
 import Header from './Header';
+import {getCarers} from '../../redux/actionCreators';
+Header.need = [() => getCarers()];      // Pre-load carers - problem loading on navigation
 
 const mapStateToProps = (state) => ({
-    links: [{
-        label: "Home",
-        link: '/'
-    }, {
-        label: "Carers",
-        link: '/carers'
-    }, {
-        label: "Register",
-        link: '/register'
-    }, {        
-        label: "Top",
-    }, {
-        label: "About Us",
-        href: "#about" 
-    }, {
-        label: "Services",
-        href: "#services" 
-    }, {
-        label: "Contact Us",
-        href: "#contactUsForm" 
-    }]
+    links: state.nav_links
 });
 
 const mapDispatchToProps = (dispatch) => ({

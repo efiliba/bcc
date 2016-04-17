@@ -43,3 +43,7 @@ export const avatarSelected = (avatar) => ({
     type: ActionTypes.AVATAR_SELECTED,
     avatar
 });
+
+export const getNavigationLinks = () => ({
+    type: ActionTypes.GET_NAVIGATION_LINKS
+});

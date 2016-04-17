@@ -7,5 +7,5 @@ export const fetchComponentData = (store, components, params) => {
         .concat(prev), 
     []);
 
-    return sequence(needs, need => store.dispatch(need(params, store.getState())));
+    return sequence(needs, (need) => store.dispatch(need(params, store.getState())));
 };

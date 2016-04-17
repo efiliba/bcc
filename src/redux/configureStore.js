@@ -1,6 +1,7 @@
 import {createStore, compose, combineReducers, applyMiddleware} from 'redux';
 import {reducer as formReducer} from 'redux-form';
-import carersReducer from './reducers/reducer';
+import carerReducer from './reducers/carerReducer';
+import navigationReducer from './reducers/navigationReducer';
 import {contactUsForm, carerRegisterForm} from './reducers/formPluginReducers';
 import thunk from 'redux-thunk';
 import DevTools from '../components/DevTools';
@@ -17,7 +18,8 @@ export default (initialState = {}) => {
     }
 
     const reducers = {
-        carers: carersReducer,
+        nav_links: navigationReducer,
+        carers: carerReducer,
         form: formReducer.plugin({              // Add plugin to formReducer
             contactUsForm,                      //    to clear the form
             carerRegisterForm                   //    to set the avatar preview
@@ -29,12 +31,12 @@ export default (initialState = {}) => {
 
     if (module.hot) {
         // Enable Webpack hot module replacement for reducers
-        module.hot.accept('./reducers/reducer', () => {
+        module.hot.accept('./reducers/carerReducer', () => {
 
             /// May need to add formReducer using combineReducers for replaceReducer
             /// http://moox.io/statinamic/docs/advanced/redux/
 
-            const nextReducer = require('./reducers/reducer');
+            const nextReducer = require('./reducers/carerReducer');
             store.replaceReducer(nextReducer);
         });
     }

@@ -28,7 +28,6 @@ import routes from '../src/routes';
 import {fetchComponentData} from './util/fetchData';
 import serverConfig from '../config';
 import template from './template';
-import Footer from '../src/components/Site/Footer';
 import {INITIAL_STATE} from '../src/redux/actions/actions';
 
 // Apply body Parser and server public assets and routes
@@ -52,10 +51,7 @@ app.use((req, res) => {
         fetchComponentData(store, renderProps.components, renderProps.params)
             .then(() => renderToString(
                 <Provider store={store}>
-                    <div>
-                        <RouterContext {...renderProps}/>
-                        <Footer/>
-                    </div>
+                    <RouterContext {...renderProps}/>
                 </Provider>
             )).then((html) => {
                 const finalState = store.getState();
