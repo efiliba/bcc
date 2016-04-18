@@ -7,7 +7,7 @@ import CarerListContainer from './components/CarerRegister/CarerListContainer';
 import CarerRecordContainer from './components/CarerRegister/CarerRecordContainer';
 import CarerRegisterContainer from './components/CarerRegister/CarerRegisterContainer';
 
-const routes = (
+export default (
     <Route path="/" component={HeaderContainer}>
         <IndexRoute component={HomeContainer}/>
         <Route path="carers" component={CarerListContainer}/>
@@ -15,5 +15,3 @@ const routes = (
         <Route path="register" component={CarerRegisterContainer}/>
     </Route>
 );
-
-export default routes;

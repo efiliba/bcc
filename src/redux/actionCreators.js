@@ -44,6 +44,7 @@ export const avatarSelected = (avatar) => ({
     avatar
 });
 
-export const getNavigationLinks = () => ({
-    type: ActionTypes.GET_NAVIGATION_LINKS
+export const setNavigationLinks = (location) => ({
+    type: ActionTypes.GET_NAVIGATION_LINKS,
+    pathname: location.pathname
 });

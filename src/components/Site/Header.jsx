@@ -1,5 +1,21 @@
 ﻿import React from 'react';
 import {Link} from 'react-router';
+//import * as Actions from '../../redux/actionCreators';
+
+const HeaderHoC = (InnerComponent) => class extends React.Component {
+    constructor() {
+        super();
+    }
+
+    render() {
+        return <InnerComponent {...this.state} {...this.props}/>;
+    }
+
+    componentDidMount() {      
+//        console.log('Header componentDidMount called');
+//        this.props.dispatch(Actions.setNavigationLinks(this.props.location));
+    }
+};
 
 const Header = ({children, links, active}) => {
     const navbars = links.map((link) => (
@@ -30,4 +46,4 @@ const Header = ({children, links, active}) => {
     );
 };
 
-export default Header;
+export default HeaderHoC(Header);

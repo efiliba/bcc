@@ -1,47 +1,46 @@
 import request from 'superagent';
 import {apiUrl} from '../../../config';
 
+export const HOME_LINKS = [{
+    label: "Home",
+    href: '#top'
+}, {
+    label: "About Us",
+    href: "#about" 
+}, {
+    label: "Services",
+    href: "#services" 
+}, {
+    label: "Contact Us",
+    href: "#contactUsForm" 
+}];
+
+export const NAVIGATION_LINKS = [{
+    label: "Home",
+    link: '/'
+}, {
+    label: "Register",
+    link: '/register'
+}, {
+    label: "Carers",
+    link: '/carers'
+}];
+
+export const INITIAL_CARER_STATE = ({
+    list: []
+});
+
+export const INITIAL_HOME_STATE = {
+    nav_links: HOME_LINKS,
+    carers: INITIAL_CARER_STATE
+};
+
 export const INITIAL_NAVIGATION_STATE = {
-    nav_links: [{
-        label: "Home",
-        href: '#top'
-    }, {
-        label: "About Us",
-        href: "#about" 
-    }, {
-        label: "Services",
-        href: "#services" 
-    }, {
-        label: "Contact Us",
-        href: "#contactUsForm" 
-    }]
+    nav_links: NAVIGATION_LINKS,
+    carers: INITIAL_CARER_STATE
 };
 
-export const INITIAL_CARER_STATE = { 
-    carers: { 
-        list: []
-    }
-};
-
-export const INITIAL_STATE = {
-    nav_links: INITIAL_NAVIGATION_STATE.nav_links,
-    carers: INITIAL_CARER_STATE.carers
-};
-
-export const getHomeLinks = () => INITIAL_NAVIGATION_STATE.nav_links;
-
-export const getNavigationLinks = () => [
-    {
-        label: "Home",
-        link: '/'
-    }, {
-        label: "Register",
-        link: '/register'
-    }, {
-        label: "Carers",
-        link: '/carers'
-    }
-];
+export const getNavigationLinks = (state, pathname) => pathname == '/' ? HOME_LINKS : NAVIGATION_LINKS;
 
 export const addCarers = (state, carers) => {
     //state.list.push(...carers);

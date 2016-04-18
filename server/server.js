@@ -28,7 +28,7 @@ import routes from '../src/routes';
 import {fetchComponentData} from './util/fetchData';
 import serverConfig from '../config';
 import template from './template';
-import {INITIAL_STATE} from '../src/redux/actions/actions';
+import {INITIAL_HOME_STATE, INITIAL_NAVIGATION_STATE} from '../src/redux/actions/actions';
 
 // Apply body Parser and server public assets and routes
 app.use(bodyParser.json({ limit: '20mb' }));
@@ -46,7 +46,7 @@ app.use((req, res) => {
             return res.status(404).end('Not found!');
         }
 
-        const store = configureStore(INITIAL_STATE);
+        const store = configureStore(req.url == '/' ? INITIAL_HOME_STATE : INITIAL_NAVIGATION_STATE);
 
         fetchComponentData(store, renderProps.components, renderProps.params)
             .then(() => renderToString(
