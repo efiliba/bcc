@@ -5,23 +5,26 @@ import {browserHistory} from 'react-router';
 
 const config = {
     form: 'carerRegisterForm',
-    fields: ['name', 'email', 'profile']
+    fields: ['name', 'email', 'profile'],
+    getFormState: (state) => state.get('form')
 };
 
 let saveAvatarFileName;                         // Save avatar file name so that it can be called in dispatch props
 
 const mapStateToProps = (state) => {
-    saveAvatarFileName = () =>  state.form.carerRegisterForm.avatarFileName;
+    saveAvatarFileName = () => state.get('form').carerRegisterForm.avatarFileName;
 
     return {
-        submitted: false
+        submitted: false,
+        avatarUploadError: state.get('form').carerRegisterForm.avatarUploadError
     };
 };
 
 const mapDispatchToProps = (dispatch) => ({
     onSubmit: (data) => {
-        dispatch(Actions.registerCarer(Object.assign({}, data, {avatarFileName: saveAvatarFileName()})));
-        browserHistory.push('/carers');
+        data.avatarFileName = saveAvatarFileName();
+        dispatch(Actions.registerCarer(data));
+        browserHistory.push('/carers');        
     }
 });
 

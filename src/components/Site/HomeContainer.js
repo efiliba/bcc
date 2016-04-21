@@ -1,12 +1,11 @@
 ﻿import React from 'react';
 import {connect} from 'react-redux';
 import Home from './Home';
-import {browserHistory} from 'react-router';
 import {staticFiles} from '../../../config';
 
 class HomeContainer extends React.Component {
     render() {
-        return <Home handleClick={this.props.handleClick}/>;
+        return <Home/>;
     }
 
     componentDidMount() {
@@ -33,10 +32,4 @@ class HomeContainer extends React.Component {
     }
 };
 
-const mapDispatchToProps = (dispatch) => ({
-    handleClick: () => {
-        browserHistory.push('/carers');
-    }
-});
-
-export default connect(null, mapDispatchToProps)(HomeContainer);
+export default connect()(HomeContainer);

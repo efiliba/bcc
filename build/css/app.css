@@ -66,7 +66,7 @@ header, #content, footer {
 }
 
 .form textarea.form-field{
-	min-height: 200px;
+	min-height: 230px;
 }
 
 .form .submit-button {
@@ -321,4 +321,33 @@ body {
 .underDevelopment {
     font-size: X-LARGE;
     color: darkblue;
+}
+
+.carer-input-form, .carer-list {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.avatarContainer {
+    width: 300px;
+    min-height: 100px;
+    border: 2px dashed #373a3c;
+    border-radius: 5px;
+}
+
+.avatarContainer > .avatarInstructions {
+    padding: 10px;
+ }
+
+.avatarContainer > img {
+    position: relative;
+    left: 50%;
+    margin-right: -50%;
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    max-width: 100%;
+    max-height: 100%;
 }

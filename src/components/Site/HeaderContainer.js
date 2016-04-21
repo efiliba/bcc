@@ -5,7 +5,7 @@ import {getCarers} from '../../redux/actionCreators';
 Header.need = [() => getCarers()];              // Pre-load carers - problem loading on navigation
 
 const mapStateToProps = (state) => ({
-    links: state.nav_links
+    links: state.get('nav_links')
 });
 
 export default connect(mapStateToProps)(Header);

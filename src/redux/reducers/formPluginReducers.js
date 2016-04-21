@@ -14,6 +14,10 @@ export const carerRegisterForm = (state, action) => {
     switch (action.type) {
         case ActionTypes.AVATAR_SELECTED:
             return Actions.avatarSelected(state, action.avatar);
+        case ActionTypes.AVATAR_UPLOAD_ERROR:
+            return Actions.avatarUploadError(state, action.errorMessage);
+        case ActionTypes.CLEAR_UPLOAD_ERROR:
+            return Actions.clearUploadError(state);
         default:
             return state;
     }

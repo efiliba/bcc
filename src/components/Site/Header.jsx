@@ -1,21 +1,6 @@
 ﻿import React from 'react';
 import {Link} from 'react-router';
-//import * as Actions from '../../redux/actionCreators';
-
-const HeaderHoC = (InnerComponent) => class extends React.Component {
-    constructor() {
-        super();
-    }
-
-    render() {
-        return <InnerComponent {...this.state} {...this.props}/>;
-    }
-
-    componentDidMount() {      
-//        console.log('Header componentDidMount called');
-//        this.props.dispatch(Actions.setNavigationLinks(this.props.location));
-    }
-};
+import {staticFiles} from '../../../config';
 
 const Header = ({children, links, active}) => {
     const navbars = links.map((link) => (
@@ -28,9 +13,9 @@ const Header = ({children, links, active}) => {
         <div>
             <header id="top">
                 <nav className="navbar navbar-fixed-top navbar-dark bg-inverse cbp-af-header">
-                    <a href="#top">
-                        <img src="/images/logo.jpg" />
-                    </a>
+                    <Link to="/">
+                        <img src={staticFiles + "/images/logo.jpg"}/>
+                    </Link>
                     <button className="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
                         &#9776;
                     </button>
@@ -46,4 +31,4 @@ const Header = ({children, links, active}) => {
     );
 };
 
-export default HeaderHoC(Header);
+export default Header;

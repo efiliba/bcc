@@ -22,7 +22,7 @@ export default (html, initialState) => `
         </script>
    		<script src="${staticFiles}/scripts/classie.js"></script>
    		<script src="${staticFiles}/scripts/cbpAnimatedHeader.min.js"></script>
-   		<script src="${staticFiles}/scripts/jquery-2.1.4.min.js"></script>
+   		<script src="${staticFiles}/scripts/jquery-2.2.3.min.js"></script>
 		<script src="${staticFiles}/scripts/tether.min.js"></script><!-- Tether for Bootstrap -->
 		<script src="${staticFiles}/scripts/bootstrap-4.0.0-alpha.2.min.js"></script>
 		<!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script-->

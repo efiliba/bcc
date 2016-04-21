@@ -1,13 +1,14 @@
 ﻿import React from 'react';
+import {Link} from 'react-router';
 import ContactUsContainer from '../Admin/ContactUsContainer';
 import Footer from './Footer';
 
-const Home = ({handleClick}) => (
+const Home = () => (
     <div className="container-fluid" id="content">
         <section className="row title-screen">
             <div className="fill-screen stellar-bg" data-stellar-background-ratio="0.2">
-                <img className="img-responsive title-image" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Logo" data-src="/images/logo.jpg" />
-                <a className="underDevelopment" onClick={handleClick}>Features Under Development</a>
+                <img className="img-responsive title-image" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Logo" data-src="/images/logo.jpg"/>
+                <Link className="underDevelopment" to="/register">Features Under Development</Link>
                 <div className="down-button">
                     <a className="btn" href="#about">
                         <i className="fa fa-arrow-circle-down fa-4x"></i>
@@ -26,17 +27,17 @@ const Home = ({handleClick}) => (
 
         <section id="services" className="row services-section">
             <div className="services-element col-md-4 wow fadeInLeft">
-                <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="/images/care.jpg" />
+                <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="/images/care.jpg"/>
                 <h2>Care</h2>
                 <p>Yeah, we do</p>
             </div>
             <div className="services-element col-md-4 wow fadeInLeft">
-                <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="/images/compassion.jpg" />
+                <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="/images/compassion.jpg"/>
                 <h2>Compassion</h2>
                 <p>Because we care about caring</p>
             </div>
             <div className="services-element col-md-4 wow fadeInLeft">
-                <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="/images/support.jpg" />
+                <img src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-src="/images/support.jpg"/>
                 <h2>Support</h2>
                 <p>Lending a helping hand</p>
             </div>

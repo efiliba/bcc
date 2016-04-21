@@ -4,6 +4,6 @@ import {getCarers} from '../../redux/actionCreators';
 
 CarerList.need = [() => getCarers()];
 
-const mapStateToProps = (state) => ({carers: state.carers});
+const mapStateToProps = (state) => ({carers: state.get('carers')});
 
 export default connect(mapStateToProps)(CarerList);

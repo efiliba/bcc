@@ -1,12 +1,13 @@
 import {createStore, compose, combineReducers, applyMiddleware} from 'redux';
 import {reducer as formReducer} from 'redux-form';
+import {Map} from 'immutable';
 import carerReducer from './reducers/carerReducer';
 import navigationReducer from './reducers/navigationReducer';
 import {contactUsForm, carerRegisterForm} from './reducers/formPluginReducers';
 import thunk from 'redux-thunk';
 import DevTools from '../components/DevTools';
 
-export default (initialState = {}) => {
+export default (initialState) => {
     let storeBuilder;
     if (process.env.CLIENT) {
         storeBuilder = compose(
@@ -17,17 +18,8 @@ export default (initialState = {}) => {
         storeBuilder = applyMiddleware(thunk);
     }
 
-    const reducers = {
-        nav_links: navigationReducer,
-        carers: carerReducer,
-        form: formReducer.plugin({              // Add plugin to formReducer
-            contactUsForm,                      //    to clear the form
-            carerRegisterForm                   //    to set the avatar preview
-        })
-    };
-    const reducer = combineReducers(reducers);
-
-    const store = storeBuilder(createStore)(reducer, initialState);
+    const reducers = combineImmutableReducers(navigationReducer, carerReducer);
+    const store = storeBuilder(createStore)(reducers, initialState);
 
     if (module.hot) {
         // Enable Webpack hot module replacement for reducers
@@ -42,4 +34,18 @@ export default (initialState = {}) => {
     }
 
     return store;
+};
+
+const combineImmutableReducers = (navigationReducer, carerReducer) => {
+    const reducers = combineReducers({
+        nav_links: navigationReducer,
+        carers: carerReducer,
+        form: formReducer.plugin({              // Add plugin to formReducer
+            contactUsForm,                      //    to clear the form
+            carerRegisterForm                   //    to set the avatar preview
+        })
+    });
+
+    return (state = {}, action) => Map(reducers(
+		Map.isMap(state) ? state.toObject() : state, action));
 };
