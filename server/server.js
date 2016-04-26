@@ -46,7 +46,7 @@ app.use((req, res) => {
             return res.status(404).end('Not found!');
         }
 
-        const initialState = getInitialState(req.url);
+        //const initialState = getInitialState(req.url);
         const store = configureStore(req.url == '/' ? INITIAL_HOME_STATE : INITIAL_NAVIGATION_STATE);
         fetchComponentData(store, renderProps.components, renderProps.params)
             .then(() => renderToString(

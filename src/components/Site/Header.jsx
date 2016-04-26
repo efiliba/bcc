@@ -5,7 +5,7 @@ import {staticFiles} from '../../../config';
 
 const Header = ({children, links, activeLink}) => {
     const isActive = (label) => label == activeLink ? ' active' : '';
-    console.log('Header setting activeLink: ' + activeLink);
+    //console.log('Header setting activeLink: ' + activeLink);
     const navbars = links.map((link) => {
         const label = link.get('label');
         const href = link.get('href');
