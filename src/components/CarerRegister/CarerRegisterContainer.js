@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => ({
     onSubmit: (data) => {
         data.avatarFileName = saveAvatarFileName();
         dispatch(Actions.registerCarer(data));
-        browserHistory.push('/carers');        
+        browserHistory.push('/carers');
     }
 });
 

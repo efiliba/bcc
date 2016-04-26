@@ -9,6 +9,10 @@ export default (state = Actions.INITIAL_CARER_STATE, action) => {
             return Actions.setSelectedCarer(state, action.carer);
         case ActionTypes.ADD_REGISTERED_CARER:
             return Actions.addRegisteredCarer(state, action.carer);
+        case ActionTypes.SAVE_AVATAR_PREVIEW:
+            return Actions.saveAvatarPreview(state, action.preview);
+        case ActionTypes.REMOVE_REGISTERED_HIGHLIGHT:
+            return Actions.removeRegisteredHighlight(state);
         default:
             return state;
     }

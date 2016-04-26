@@ -4,6 +4,13 @@ import {getCarer} from '../../redux/actionCreators';
 
 CarerRecord.need = [(params) => getCarer(params.id)];
 
-const mapStateToProps = (state) => ({carer: state.carer});
+const mapStateToProps = (state) => { 
+    
+    // NOT CALLED
+
+    console.log('--- carer record ---', state);
+    
+    return ({carer: state.carer});
+};
 
 export default connect(mapStateToProps)(CarerRecord);

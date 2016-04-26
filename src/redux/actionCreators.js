@@ -18,10 +18,16 @@ export const saveContactRequest = (data) => (dispatch) => fetch(`${apiUrl}/saveC
     }))
     .catch((err) => console.log('Error in saveContactRequest API', err));
 
-export const avatarSelected = (avatar) => ({
-    type: ActionTypes.AVATAR_SELECTED,
-    avatar
-});
+export const avatarSelected = (avatar) => (dispatch) => {
+    dispatch({
+        type: ActionTypes.AVATAR_SELECTED,
+        avatar
+    });
+    dispatch({
+        type: ActionTypes.SAVE_AVATAR_PREVIEW,
+        preview: avatar.preview
+    });
+};
 
 export const avatarUploadError = (errorMessage) => (dispatch) => {
     dispatch({
@@ -39,10 +45,14 @@ export const registerCarer = (data) => (dispatch) => fetch(`${apiUrl}/saveCarer`
         headers: new Headers({
             'Content-Type': 'application/json'
         })
-    }).then((response) => dispatch({
+    })
+    .then((response) => dispatch({
         type: ActionTypes.ADD_REGISTERED_CARER,
         carer: data
-    }));
+    }))
+    .then(setTimeout(() => dispatch({
+        type: ActionTypes.REMOVE_REGISTERED_HIGHLIGHT
+    }), 2000));
 
 export const getCarers = () => (dispatch) => fetch(`${apiUrl}/carers`)
     .then((response) => response.json())

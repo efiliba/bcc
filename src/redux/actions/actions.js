@@ -1,10 +1,10 @@
-import {List, Map} from 'immutable';
+import {List, Map, fromJS} from 'immutable';
 import request from 'superagent';
 import {apiUrl} from '../../../config';
 
-export const INITIAL_CARER_STATE = List();
+export const INITIAL_CARER_STATE = Map();//{list: List()});
 
-export const HOME_LINKS = List.of(
+const HOME_LINKS = List.of(
     Map({
         label: "Home",
         href: '#top'
@@ -23,45 +23,70 @@ export const HOME_LINKS = List.of(
     })
 );
 
-export const NAVIGATION_LINKS = List.of(
+const NAVIGATION_LINKS = List.of(
     Map({
         label: "Home",
-        link: '/'
+        to: '/'
     }),
     Map({
         label: "Register",
-        link: '/register'
+        to: '/register'
     }),
     Map({
         label: "Carers",
-        link: '/carers'
+        to: '/carers'
     })
 );
 
 export const INITIAL_HOME_STATE = Map({
-    nav_links: HOME_LINKS,
-    carers: INITIAL_CARER_STATE
+    nav_links: Map({
+        list: HOME_LINKS
+    })
 });
 
 export const INITIAL_NAVIGATION_STATE = Map({
-    nav_links: NAVIGATION_LINKS,
-    carers: INITIAL_CARER_STATE
+    nav_links: Map({
+        list: NAVIGATION_LINKS
+    })
 });
 
-export const setNavigationLinks = (state, pathname) => (pathname == '/' ? HOME_LINKS : NAVIGATION_LINKS).toJS();
 
-export const addCarers = (state, carers) => carers;
+//export const INITIAL_STATE = [Map({
+//    nav_links: Map({
+//        list: NAVIGATION_LINKS
+//    })
+//});
+
+
+export const setNavigationLinks = (state, pathname) => { 
+    console.log('setNavigationLinks: ' + pathname);
+    
+    return state
+    .set('list', pathname == '/' ? HOME_LINKS : NAVIGATION_LINKS)
+    .set('active_link', pathname);
+};
+
+export const setActiveLink = (state, link) => state.set('active_link', link);
+
+export const addCarers = (state, carers) => state.set('list', fromJS(carers));
 
 export const setSelectedCarer = (state, carer) => state;
 
+export const saveAvatarPreview = (state, preview) => state.set('preview', preview);
+
 export const addRegisteredCarer = (state, carer) => {
-    return [Object.assign({}, carer, {
+    var addCarer = Object.assign({
         _id: carer.avatarFileName,              // Temp id
         availability: [],
         services: [],
         preferences: [],
-        qualifications: []
-    }), ...state];
+        qualifications: [],
+        highlight: true,
+        preview: state.get('preview')
+    },  carer);
+
+    return state.update('list', (carers) => carers.unshift(fromJS(addCarer)))
+        .delete('preview');                     // Remove the avatar preview - saved in carer now
 };
 
 export const onContactUsSaved = (state) => ({
@@ -72,11 +97,11 @@ export const onContactUsSaved = (state) => ({
 });
 
 export const avatarSelected = (state, avatar) => {
-    const fieldname = Date.now() + '-' + avatar.name;
+    const avatarFileName = Date.now() + '-' + avatar.name;
     const req = request.post(`${apiUrl}/avatar`);
-    req.attach(fieldname, avatar);
+    req.attach(avatarFileName, avatar);
 
-    let nextState = Object.assign({}, state);
+    let nextState = Object.assign({avatarFileName}, state);
     delete nextState.avatarUploadError;
 
     req.end((req, res) => {
@@ -86,8 +111,6 @@ export const avatarSelected = (state, avatar) => {
         }
     });
 
-    nextState.avatar = avatar;                  // Avatar File does not show in DevTools - needed for preview
-    nextState.avatarFileName = fieldname;
     return nextState;
 };
 
@@ -99,10 +122,4 @@ export const clearUploadError = (state) => {
     return nextState;
 };
 
-// DELETE:
-// return state.filter((key) => key.id != id);
-
-// EDIT:
-// return state.map((key) => key.id == id ?
-//      Object.assign({}, key, { newField: value }) : key
-// );
+export const removeRegisteredHighlight = (state) => state.deleteIn(['list', 0, 'highlight']);

@@ -13,10 +13,10 @@ const rejectStyle = {
     backgroundColor: '#ffdddd'
 };
 
-const AvatarUpload = ({avatar, handleAvatarSelected}) => (
+const AvatarUpload = ({preview, handleAvatarSelected}) => (
     <Dropzone className='avatarContainer' activeStyle={activeStyle} rejectStyle={rejectStyle} onDrop={handleAvatarSelected} multiple={false} accept={'image/*'}>
-        {avatar
-            ? <img src={avatar.preview}/>
+        {preview
+            ? <img src={preview}/>
             : <div className='avatarInstructions'>Drag and drop your avatar here, or click to select an image to upload.</div>
         }
     </Dropzone>

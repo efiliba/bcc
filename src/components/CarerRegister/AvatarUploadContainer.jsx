@@ -2,7 +2,7 @@
 import AvatarUpload from './AvatarUpload';
 import * as Actions from '../../redux/actionCreators';
 
-const mapStateToProps = (state) => ({avatar: state.get('form').carerRegisterForm.avatar});
+const mapStateToProps = (state) => ({preview: state.getIn(['carers', 'preview'])});
 
 const mapDispatchToProps = (dispatch) => ({
     handleAvatarSelected: (files) => {

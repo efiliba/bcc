@@ -31,13 +31,13 @@ import template from './template';
 import {INITIAL_HOME_STATE, INITIAL_NAVIGATION_STATE} from '../src/redux/actions/actions';
 
 // Apply body Parser and server public assets and routes
-app.use(bodyParser.json({ limit: '20mb' }));
-app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
+app.use(bodyParser.json({limit: '20mb'}));
+app.use(bodyParser.urlencoded({limit: '20mb', extended: false}));
 app.use(Express.static(serverConfig.serveStaticFiles));
 
 // Server Side Rendering based on routes matched by React-router.
 app.use((req, res) => {
-    match({ routes, location: req.url }, (err, redirectLocation, renderProps) => {
+    match({routes, location: req.url}, (err, redirectLocation, renderProps) => {
         if (err) {
             return res.status(500).end('Internal server error');
         }
@@ -46,7 +46,8 @@ app.use((req, res) => {
             return res.status(404).end('Not found!');
         }
 
-        const store = configureStore((req.url == '/' ? INITIAL_HOME_STATE : INITIAL_NAVIGATION_STATE).toJS());
+        const initialState = getInitialState(req.url);
+        const store = configureStore(req.url == '/' ? INITIAL_HOME_STATE : INITIAL_NAVIGATION_STATE);
         fetchComponentData(store, renderProps.components, renderProps.params)
             .then(() => renderToString(
                 <Provider store={store}>
@@ -54,6 +55,7 @@ app.use((req, res) => {
                 </Provider>
             )).then((html) => {
                 const finalState = store.getState();
+//console.log('finalState', finalState);
                 res.status(200).end(template(html, finalState));
             }).catch((err) => {
                 res.end('Error loading template: ' + err);

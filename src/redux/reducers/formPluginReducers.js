@@ -22,4 +22,3 @@ export const carerRegisterForm = (state, action) => {
             return state;
     }
 }
-

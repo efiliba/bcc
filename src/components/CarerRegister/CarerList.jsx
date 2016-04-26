@@ -3,10 +3,10 @@ import CarerRecord from './CarerRecord';
 import {Link} from 'react-router';
 
 const CarerList = ({carers}) => {
-    const carerRecords = !carers.length ? 'No carers found' : carers.map((carer) => (
-        <div key={carer._id}>
+    const carerRecords = !carers.size ? 'No carers found' : carers.map((carer) => (
+        <div key={carer.get('_id')}>
             <CarerRecord carer={carer}/>
-            <Link to={'/carer/' + carer._id}>select</Link>
+            <Link to={'/carer/' + carer.get('_id')}>select</Link>
         </div>
     ));
 

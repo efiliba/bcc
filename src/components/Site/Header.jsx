@@ -1,14 +1,22 @@
 ﻿import React from 'react';
 import {Link} from 'react-router';
+import Immutable from 'immutable';
 import {staticFiles} from '../../../config';
 
-const Header = ({children, links, active}) => {
-    const navbars = links.map((link) => (
-        <li className="nav-item" key={link.label}>
-            {link.href && <a className="nav-link nav-anchor" href={link.href}>{link.label}</a>}
-            {link.link && <Link className="nav-link" to={link.link}>{link.label}</Link>}
-        </li>
-    ));
+const Header = ({children, links, activeLink}) => {
+    const isActive = (label) => label == activeLink ? ' active' : '';
+    console.log('Header setting activeLink: ' + activeLink);
+    const navbars = links.map((link) => {
+        const label = link.get('label');
+        const href = link.get('href');
+        const to = link.get('to');
+        return (
+            <li className="nav-item" key={label}>
+                {href && <a className='nav-link nav-anchor' href={href}>{label}</a>}
+                {to && <Link className={'nav-link' + isActive(to)} to={to}>{label}</Link>}
+            </li>
+        );
+    });
     return (
         <div>
             <header id="top">
@@ -29,6 +37,12 @@ const Header = ({children, links, active}) => {
             {children}
         </div>
     );
+};
+
+Header.propTypes = {
+    children: React.PropTypes.object,
+    links: React.PropTypes.instanceOf(Immutable.List),
+    activeLink: React.PropTypes.string
 };
 
 export default Header;

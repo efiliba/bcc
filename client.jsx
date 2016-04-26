@@ -2,6 +2,7 @@
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {Router, browserHistory} from 'react-router';
+import {fromJS} from 'immutable';
 import configureStore from './src/redux/configureStore';
 import DevTools from './src/components/DevTools';
 import routes from './src/routes';
@@ -9,10 +10,14 @@ import {setNavigationLinks} from './src/redux/actionCreators';
 
 //import createBrowserHistory from 'history/lib/createBrowserHistory';
 
-const store = configureStore(window.__INITIAL_STATE__);
+const store = configureStore(fromJS(window.__INITIAL_STATE__));
 const dest = document.getElementById('root');
 
-browserHistory.listen((location) => store.dispatch(setNavigationLinks(location)));
+browserHistory.listen((location) => {
+    store.dispatch(setNavigationLinks(location));
+console.log('location', location);
+    window.scrollTo(0, 0);
+});
 
 render(
     <Provider store={store}>
