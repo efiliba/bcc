@@ -4,16 +4,15 @@ import Immutable from 'immutable';
 import {staticFiles} from '../../../config';
 
 const Header = ({children, links, activeLink}) => {
-    const isActive = (label) => label == activeLink ? ' active' : '';
-    //console.log('Header setting activeLink: ' + activeLink);
+    const isActive = (active) => active ? ' active' : '';
     const navbars = links.map((link) => {
         const label = link.get('label');
         const href = link.get('href');
         const to = link.get('to');
         return (
             <li className="nav-item" key={label}>
-                {href && <a className='nav-link nav-anchor' href={href}>{label}</a>}
-                {to && <Link className={'nav-link' + isActive(to)} to={to}>{label}</Link>}
+                {href && <a className={'nav-link nav-anchor' + isActive(link.get('active'))} href={href}>{label}</a>}
+                {to && <Link className={'nav-link' + isActive(to == activeLink)} to={to}>{label}</Link>}
             </li>
         );
     });

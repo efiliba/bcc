@@ -15,7 +15,6 @@ const dest = document.getElementById('root');
 
 browserHistory.listen((location) => {
     store.dispatch(setNavigationLinks(location));
-console.log('location', location);
     window.scrollTo(0, 0);
 });
 

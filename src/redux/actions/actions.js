@@ -2,12 +2,13 @@ import {List, Map, fromJS} from 'immutable';
 import request from 'superagent';
 import {apiUrl} from '../../../config';
 
-export const INITIAL_CARER_STATE = Map();//{list: List()});
+export const INITIAL_CARER_STATE = Map();
 
 const HOME_LINKS = List.of(
     Map({
         label: "Home",
-        href: '#top'
+        href: '#top',
+        active: true
     }),
     Map({
         label: "About Us",
@@ -38,33 +39,30 @@ const NAVIGATION_LINKS = List.of(
     })
 );
 
-export const INITIAL_HOME_STATE = Map({
-    nav_links: Map({
-        list: HOME_LINKS
+export const INITIAL_STATE = {
+    '/': Map({
+        nav_links: Map({
+            list: HOME_LINKS,
+            active_link: '/'
+        })
+    }),
+    '/register': Map({
+        nav_links: Map({
+            list: NAVIGATION_LINKS,
+            active_link: '/register'
+        })
+    }),
+    '/carers': Map({
+        nav_links: Map({
+            list: NAVIGATION_LINKS,
+            active_link: '/carers'
+        })
     })
-});
+};
 
-export const INITIAL_NAVIGATION_STATE = Map({
-    nav_links: Map({
-        list: NAVIGATION_LINKS
-    })
-});
-
-
-//export const INITIAL_STATE = [Map({
-//    nav_links: Map({
-//        list: NAVIGATION_LINKS
-//    })
-//});
-
-
-export const setNavigationLinks = (state, pathname) => { 
-    console.log('setNavigationLinks: ' + pathname);
-    
-    return state
+export const setNavigationLinks = (state, pathname) => state
     .set('list', pathname == '/' ? HOME_LINKS : NAVIGATION_LINKS)
     .set('active_link', pathname);
-};
 
 export const setActiveLink = (state, link) => state.set('active_link', link);
 
